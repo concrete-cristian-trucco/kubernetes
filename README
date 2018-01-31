@@ -1,0 +1,34 @@
+## No Windows
+cd C:\
+minikube start --vm-driver="hyperv" --hyperv-virtual-switch="My Virtual Switch"
+
+ou utilizar VirtualBox
+
+kubectl create -f aplicacao.yaml
+kubectl get pods
+kubectl get services
+
+kubectl describe pods | findstr "IP"
+minikube service servico-aplicacao --url
+minikube dashboard
+
+kubectl exec -it statefulset-mysql-0 bash
+
+kubectl delete pods aplicacao
+
+minikube stop
+
+#####
+
+kubectl create -f app/deployment.yaml
+kubectl create -f app/servico-aplicacao.yaml
+
+kubectl create -f db/statefulset.yaml
+kubectl create -f db/servico-banco.yaml
+kubectl create -f db/permissoes.yaml
+
+#####
+
+kubectl config get-contexts
+
+kubectl scale deployment aplicacao-deployment --replicas=3
